@@ -10,11 +10,11 @@ const dbName = process.env.DB_NAME;
 const dbPort = process.env.DB_PORT;
 
 //db connection
-export const dbConnection = mongoose
-  .connect("mongodb://${dbHost}:${dbPort}/${dbName}")
+export const db = mongoose // connect to the database using mongoose connect method and pass the connection string
+  .connect(`mongodb://${dbHost}:${dbPort}/${dbName}`)
   .then((res) => {
     if (res) {
-      console.log(`DB Connected to ${dbName}`);
+      console.log(`Database connection succeffully to ${dbName}`);
     }
   })
   .catch((err) => {
