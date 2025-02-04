@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/geekyaayushma/node-api/issues"
   },
-  "homepage": "https://github.com/geekyaayushma/node-api#readme"
+  "homepage": "https://github.com/geekyaayushma/node-api#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
