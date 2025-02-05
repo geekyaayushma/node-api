@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 import Joi from "joi";
 
 export const MovieSchemaValidate = Joi.object({
-  titile: Joi.string().required(),
+  title: Joi.string().required(),
   genere: Joi.string().required(),
   synopsis: Joi.string().required(),
 });
@@ -21,7 +21,7 @@ const moviesSchema = new Schema<Imovies>({
   },
   genere: {
     type: String,
-    requires: true,
+    required: true,
   },
   synopsis: {
     type: String,
@@ -29,4 +29,4 @@ const moviesSchema = new Schema<Imovies>({
   },
 });
 
-export const MovieModel = model("Movie", moviesSchema);
+export const MovieModel = model<Imovies>("Movie", moviesSchema);
