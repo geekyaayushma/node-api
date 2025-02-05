@@ -8,7 +8,7 @@ export const MovieSchemaValidate = Joi.object({
   synopsis: Joi.string().required(),
 });
 //creating sn internal schema
-interface Imovies {
+export interface Imovies {
   title: string;
   genere: string;
   synopsis: string;
