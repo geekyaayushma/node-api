@@ -1,32 +1,37 @@
-//model/schema.ts
 import { Schema, model } from "mongoose";
 import Joi from "joi";
 
+//validation schema
 export const MovieSchemaValidate = Joi.object({
   title: Joi.string().required(),
-  genere: Joi.string().required(),
+  genre: Joi.string().required(),
   synopsis: Joi.string().required(),
 });
-//creating sn internal schema
-export interface Imovies {
+
+//creating an interface
+interface IMovies {
   title: string;
-  genere: string;
+  genre: string;
   synopsis: string;
 }
-//Movie schema
-const moviesSchema = new Schema<Imovies>({
+
+//MoviesSchema
+const moviesSchema = new Schema<IMovies>({
   title: {
     type: String,
     required: true,
   },
-  genere: {
+
+  genre: {
     type: String,
     required: true,
   },
+
   synopsis: {
     type: String,
     required: true,
   },
 });
 
-export const MovieModel = model<Imovies>("Movie", moviesSchema);
+//creating a model
+export const Movie = model<IMovies>("Movies", moviesSchema);

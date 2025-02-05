@@ -1,4 +1,4 @@
-import { Imovies, Movie } from "../node-api/schema";
+import { Movie } from "../node-api/schema";
 
 export async function createMovie(data: any) {
   try {
