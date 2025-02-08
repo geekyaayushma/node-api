@@ -15,3 +15,14 @@ export async function createMovie(data: any) {
     };
   }
 }
+export async function getMovies() {
+  try {
+    const movies = await Movie.find({});
+    return movies;
+  } catch (error) {
+    return {
+      status: "Failed",
+      message: error,
+    };
+  }
+}
