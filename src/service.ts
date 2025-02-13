@@ -47,5 +47,5 @@ export async function updateMovie(id: string, data: any) {
       status: "Failed",
       data: error,
     };
-  
+  }
 }
