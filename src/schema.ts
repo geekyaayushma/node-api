@@ -1,29 +1,37 @@
 import { Schema, model } from "mongoose";
 import Joi from "joi";
 
-// ✅ Joi Schema for validation
+//validation schema
 export const MovieSchemaValidate = Joi.object({
-  title: Joi.string().trim().min(1).required(), // Ensures non-empty trimmed strings
-  genre: Joi.string().trim().required(),
-  synopsis: Joi.string().trim().required(),
+  title: Joi.string().required(),
+  genre: Joi.string().required(),
+  synopsis: Joi.string().required(),
 });
 
-// ✅ TypeScript Interface
-interface IMovie {
+//creating an interface
+interface IMovies {
   title: string;
   genre: string;
   synopsis: string;
 }
 
-// ✅ Mongoose Schema
-const movieSchema = new Schema<IMovie>(
-  {
-    title: { type: String, required: true, trim: true },
-    genre: { type: String, required: true, trim: true },
-    synopsis: { type: String, required: true, trim: true },
+//MoviesSchema
+const moviesSchema = new Schema<IMovies>({
+  title: {
+    type: String,
+    required: true,
   },
-  { timestamps: true } // ✅ Adds createdAt & updatedAt fields
-);
 
-// ✅ Model Creation
-export const Movie = model<IMovie>("Movie", movieSchema);
+  genre: {
+    type: String,
+    required: true,
+  },
+
+  synopsis: {
+    type: String,
+    required: true,
+  },
+});
+
+//creating a model
+export const Movie = model<IMovies>("Movies", moviesSchema);
