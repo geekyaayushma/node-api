@@ -28,4 +28,4 @@ const moviesSchema = new mongoose_1.Schema({
     },
 });
 //creating a model
-exports.Movie = mongoose_1.model("Movies", moviesSchema);
+exports.Movie = (0, mongoose_1.model)("Movies", moviesSchema);

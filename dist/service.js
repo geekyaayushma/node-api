@@ -9,24 +9,90 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createMovie = void 0;
-const schema_1 = require("../node-api/schema");
+exports.createMovie = createMovie;
+exports.getMovies = getMovies;
+exports.updateMovie = updateMovie;
+exports.deleteMovie = deleteMovie;
+const schema_1 = require("../model/schema");
 function createMovie(data) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const newMovie = yield schema_1.Movie.create(data);
             console.log(newMovie);
             return {
-                status: "Sucess",
+                status: "Success",
                 data: newMovie,
             };
         }
         catch (error) {
             return {
-                status: "Error",
+                status: "Failed",
                 message: error,
             };
         }
     });
 }
-exports.createMovie = createMovie;
+function getMovies() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const movies = yield schema_1.Movie.find({});
+            return movies;
+        }
+        catch (error) {
+            return {
+                status: "Failed",
+                message: error,
+            };
+        }
+    });
+}
+function updateMovie(id, data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const movie = yield schema_1.Movie.findByIdAndUpdate({ _id: id }, data, {
+                new: true,
+            });
+            if (!movie) {
+                return {
+                    status: "Failed",
+                    message: "Post not available",
+                };
+            }
+            return {
+                status: "Success",
+                data: movie,
+            };
+        }
+        catch (error) {
+            return {
+                status: "Failed",
+                data: error,
+            };
+        }
+    });
+}
+function deleteMovie(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const movie = yield schema_1.Movie.findByIdAndDelete({ _id: id });
+            if (!movie) {
+                return {
+                    status: "Failed",
+                    message: "post not available",
+                };
+            }
+            else {
+                return {
+                    status: "Success",
+                    message: movie,
+                };
+            }
+        }
+        catch (error) {
+            return {
+                status: "Failed",
+                message: error,
+            };
+        }
+    });
+}
