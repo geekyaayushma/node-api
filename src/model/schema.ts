@@ -35,3 +35,4 @@ const moviesSchema = new Schema<IMovies>({
 
 //creating a model
 export const Movie = model<IMovies>("Movies", moviesSchema);
+export default Movie;
