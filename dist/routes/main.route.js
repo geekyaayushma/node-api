@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const movie_route_1 = require("../controllers/movie.route");
+const movieRoutes = (0, express_1.Router)();
+movieRoutes.post("/insertMovie", movie_route_1.insertMovie);
+movieRoutes.get("/", movie_route_1.Movies);
+movieRoutes.patch("/updateMovie", movie_route_1.Update);
+movieRoutes.delete("/deleteMovie", movie_route_1.Delete);
+exports.default = movieRoutes;
