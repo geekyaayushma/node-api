@@ -5,7 +5,7 @@ import { db } from "./dbConnection";
 import movieRoutes from "./routes/main.route";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 301;
 
 // app.get('/', (req: Request, res: Response) => {
 //     res.send('Hello, TypeScript Express!');
