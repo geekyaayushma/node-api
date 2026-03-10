@@ -11,7 +11,7 @@ const movieRoutes = Router();
 
 movieRoutes.post("/insertMovie", insertMovie);
 movieRoutes.get("/", Movies);
-movieRoutes.patch("/updateMovie", Update);
-movieRoutes.delete("/deleteMovie", Delete);
+movieRoutes.patch("/updateMovie/:id", Update);
+movieRoutes.delete("/deleteMovie/:id", Delete);
 
 export default movieRoutes;

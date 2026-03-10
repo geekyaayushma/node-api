@@ -1,6 +1,7 @@
 import { Movie } from "../model/schema";
+import { IMovies } from "../model/schema";
 
-export async function createMovie(data: any) {
+export async function createMovie(data: Partial<IMovies>) {
   try {
     const newMovie = await Movie.create(data);
     console.log(newMovie);
@@ -28,12 +29,12 @@ export async function getMovies() {
   }
 }
 
-export async function updateMovie(id: string, data: any) {
+export async function updateMovie(id: string, data: Partial<IMovies>) {
   try {
-    const movie = await Movie.findByIdAndUpdate({ _id: id }, data, {
+    const movie = await Movie.findOneAndUpdate({ id: Number(id) }, data, {
       new: true,
     });
-
+    console.log("Movie found:", movie);
     if (!movie) {
       return {
         status: "Failed",
@@ -54,7 +55,7 @@ export async function updateMovie(id: string, data: any) {
 
 export async function deleteMovie(id: string) {
   try {
-    const movie = await Movie.findByIdAndDelete({ _id: id });
+    const movie = await Movie.findOneAndDelete({ id: Number(id) });
     if (!movie) {
       return {
         status: "Failed",

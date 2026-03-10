@@ -3,20 +3,24 @@ import Joi from "joi";
 
 //validation schema
 export const MovieSchemaValidate = Joi.object({
+  id: Joi.number(),
   title: Joi.string().required(),
   genre: Joi.string().required(),
   synopsis: Joi.string().required(),
 });
 
-//creating an interface
-interface IMovies {
+export interface IMovies {
+  id: number;
   title: string;
   genre: string;
   synopsis: string;
 }
 
-//MoviesSchema
 const moviesSchema = new Schema<IMovies>({
+  id: {
+    type: Number,
+    unique: true,
+  },
   title: {
     type: String,
     required: true,
@@ -33,6 +37,5 @@ const moviesSchema = new Schema<IMovies>({
   },
 });
 
-//creating a model
 export const Movie = model<IMovies>("Movies", moviesSchema);
 export default Movie;

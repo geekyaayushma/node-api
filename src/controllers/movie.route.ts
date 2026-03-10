@@ -4,6 +4,7 @@ import { MovieSchemaValidate } from "../model/schema";
 
 export async function insertMovie(req: Request, res: Response) {
   const data = {
+    id: req.body.id,
     title: req.body.title,
     genre: req.body.genre,
     synopsis: req.body.synopsis,
@@ -24,11 +25,13 @@ export async function Movies(req: Request, res: Response) {
 }
 
 export async function Update(req: Request, res: Response) {
-  const service = await updateMovie(req.body.id, req.body);
+  const id = req.params.id;
+  const service = await updateMovie(id, req.body);
   res.status(201).send(service);
 }
 
 export async function Delete(req: Request, res: Response) {
-  const service = await deleteMovie(req.body.id);
+  const id = req.params.id;
+  const service = await deleteMovie(id);
   res.status(201).send(service);
 }
